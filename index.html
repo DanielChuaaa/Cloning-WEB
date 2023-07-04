@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <!--   https://www.rhiannonnavin.com/ -->
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      .topHeader {
+        background-color: rgb(218, 79, 68);
+        padding: 10px;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        gap: 150px;
+      }
+      .nav1 {
+        margin-top: 2%;
+      }
+      .nav1 a {
+        padding: 5px;
+        color: rgb(67, 55, 35);
+        font-size: 13px;
+      }
+      .nav1 a:hover {
+        color: rgba(1, 1, 1, 0.3);
+        transition: 0.3s;
+      }
+      .dropdown {
+        display: inline-block;
+      }
+      .nav2 {
+        margin-top: 2%;
+      }
+      .nav2 a {
+        padding: 5px;
+        color: rgb(67, 55, 35);
+        font-size: 13px;
+      }
+      .nav2 a:hover {
+        color: rgba(1, 1, 1, 0.3);
+        transition: 0.3s;
+      }
+      .dropdown-content {
+        position: absolute;
+        background-color: rgb(233, 233, 233);
+        min-width: 170px;
+        transition: transform 0.6s, opacity 0.6s;
+        transform: translateY(7%);
+        pointer-events: none;
+        opacity: 0;
+        z-index: 1;
+      }
+      .dropdown-content a {
+        display: block;
+        padding: 18px 16px;
+        font-size: 12px;
+        color: rgb(67, 55, 35);
+      }
+      .dropdown:hover .dropdown-content {
+        pointer-events: stroke;
+        transform: translateY(0%);
+        opacity: 1;
+      }
+      .name {
+        color: rgb(199, 66, 63);
+        font-size: 25px;
+        letter-spacing: 5px;
+        margin-top: 0.5%;
+      }
+      .text {
+        text-align: center;
+        font-size: 25px;
+      }
+      .row {
+        display: flex;
+        gap: 20px;
+        margin-top: 2%;
+      }
+      .column > .imgMain1 {
+        margin-left: 10%;
+      }
+      .column1 {
+        /* margin untuk image di kanan */
+        margin-right: 5%;
+      }
+      .column p {
+        font-size: 24px;
+        color: rgba(1, 1, 1, 0.7);
+        word-spacing: 2px;
+        line-height: 35px;
+        margin-top: 10%;
+        margin-left: 11%;
+      }
+      .column img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footerMain {
+        margin-top: 3%;
+        padding-bottom: 4%;
+      }
+      .footerMain {
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 0.32px;
+        color: rgb(117, 116, 117);
+      }
+      .footerMain a {
+        text-align: center;
+        color: rgb(231, 74, 45);
+      }
+      main {
+        background-color: rgb(236, 235, 231);
+        padding-top: 4%;
+        padding-bottom: 4%;
+      }
+      main p {
+        font-size: 23px;
+        line-height: 35px;
+        color: rgb(81, 65, 64);
+      }
+      .mainText1 {
+        display: flex;
+        justify-content: center;
+      }
+      .mainText2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
+      }
+      .linkReadMoreReviews p {
+        text-align: center;
+        font-size: 17px;
+        text-decoration: underline;
+      }
+      .linkReadMoreReviews a {
+        color: rgb(231, 74, 45);
+      }
+      .about {
+        padding-top: 3%;
+        padding-bottom: 10%;
+      }
+      .about h1 {
+        margin-left: 4%;
+        font-size: 40px;
+        word-spacing: 3px;
+        letter-spacing: 1px;
+      }
+      .about a {
+        text-decoration: underline;
+        color: rgb(231, 74, 45);
+      }
+      .about p {
+        margin-left: 4%;
+        line-height: 27px;
+        word-spacing: 2px;
+        font-size: 17px;
+        color: rgb(117, 119, 117);
+      }
+      .about img {
+        float: right;
+        position: absolute;
+        left: 66%;
+        top: 273%;
+        border-radius: 1%;
+      }
+      .photoCredit {
+        position: absolute;
+        margin-top: 37.3%;
+        left: 837px;
+      }
+      .buyBookSection {
+        padding-top: 6%;
+        padding-bottom: 6%;
+        background-color: rgb(199, 66, 63);
+        pointer-events: none;
+      }
+      .buyBookSection button {
+        display: block;
+        margin: auto;
+        width: 270px;
+        padding: 30px;
+        border-style: none;
+        border-radius: 4px;
+        background-color: white;
+        color: rgb(199, 66, 63);
+        pointer-events: fill;
+        font-size: 18px;
+      }
+      .buyBookSection a {
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: rgb(199, 66, 63);
+      }
+      .buyBookSection button:hover {
+        opacity: 0.8;
+      }
+      .comeAlongSection {
+        padding-top: 1%;
+        padding-bottom: 2%;
+        background-color: rgb(237, 234, 230);
+      }
+      .comeAlongSection h3 {
+        text-align: center;
+        font-size: 25px;
+        padding-top: 1.5%;
+        color: rgb(199, 66, 63);
+        letter-spacing: 1px;
+      }
+      .comeAlongSection p {
+        text-align: center;
+        color: rgb(88, 87, 81);
+        line-height: 8px;
+        font-size: 15px;
+      }
+      .comeAlongSection input {
+        margin-left: 37.5%;
+        margin-top: 2.2%;
+        width: 230px;
+        height: 30px;
+        border-style: none;
+      }
+      ::placeholder {
+        color: rgb(203, 189, 185);
+        padding-left: 2%;
+        font-size: 14px;
+      }
+      .comeAlongSection a {
+        color: white;
+        background-color: rgb(199, 66, 63);
+        padding: 10px 8px;
+        border-radius: 2px;
+        margin-left: 0.5%;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .comeAlongSection a:hover {
+        opacity: 0.8;
+      }
+      .footer {
+        background-color: rgb(237, 234, 230);
+        margin-top: 0.1%;
+        padding-top: 5%;
+        padding-bottom: 3%;
+        pointer-events: none;
+      }
+      .footer .social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        color: rgb(199, 66, 63);
+        pointer-events: stroke;
+      }
+      .footer .link {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 4%;
+        pointer-events: stroke;
+      }
+      .footer a {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        margin-bottom: 2%;
+        color: rgb(67,55,35);
+      }
+      .footer p{
+        text-align: center;
+        font-size: 13px;
+        color: rgb(69,89,77);
+      }
+      .social i:hover {
+        cursor: pointer;
+        color: black;
+      }
+      .link a:hover{
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="topHeader"></div>
+    </header>
+
+    <nav>
+      <div class="nav1">
+        <hr />
+        <a href="#"> THE AUTHOR </a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn"> ONLY CHILD </a>
+          <div class="dropdown-content">
+            <a href="#"> THE NOVEL</a>
+            <a href="#"> EXCERPT </a>
+            <a href="#"> FOREIGN EDITIONS </a>
+            <a href="#"> REVIEWS </a>
+            <a href="#"> READING GROUP GUIDE </a>
+          </div>
+        </div>
+        <a href="#"> EVENTS </a>
+        <hr />
+      </div>
+
+      <div class="name">
+        <h1>Daniel Chua</h1>
+      </div>
+
+      <div class="nav2">
+        <hr />
+        <a href="#"> GET INVOLVED </a>
+        <a href="#"> DIARY </a>
+        <a href="#"> CONTACT </a>
+        <hr />
+      </div>
+    </nav>
+
+    <div class="text">
+      <p style="font-size: 40px; font-weight: 10px">
+        "An audacious debut novel."
+      </p>
+      <p style="font-size: 20px; font-weight: 25px; margin-top: 2.5%">
+        - THE NEW YORK TIMES
+      </p>
+    </div>
+
+    <content>
+      <div class="row">
+        <div class="column">
+          <img
+            src="assets/bookleft.png"
+            class="imgMain1"
+            width="400px"
+            height="600px"
+          />
+        </div>
+
+        <div class="column">
+          <p>
+            "It was a brave decision by Navin to entrust the telling of such a
+            powerful story to a six-year-old but she pulls it off to perfection.
+            This is the authentic voice of an honest, bright. intelligent, and
+            observant child. it struck me that any of us would be proud to have
+            Zach as their son."
+            <br />
+            <span style="font-size: 15px"> -RICHARD AND JUDY BOOK CLUB </span>
+          </p>
+
+          <img src="assets/bookclublogo.png" />
+        </div>
+
+        <div class="column1">
+          <img
+            src="assets/bookright.jpg"
+            class="imgMain2"
+            width="400px"
+            height="600px"
+          />
+        </div>
+      </div>
+
+      <div class="footerMain">
+        <a href="#"><i> Only Child </i></a> tells the story of six-year-old
+        Zach, who survives a deadly shooting in his school by hiding in his
+        <br />
+        classroom closet. In the middle of the raw and devastating aftermath,
+        Zach finds the strength and determination
+        <br />
+        to help the adults in his life rediscover the love and compassion needed
+        to pull them through their darkest hour.
+        <p style="text-align: center; margin-top: 2%">
+          <a
+            href="#"
+            style="color: rgb(231, 74, 45); text-decoration: underline"
+          >
+            Learn more about the book →
+          </a>
+        </p>
+        <br />
+      </div>
+    </content>
+
+    <main>
+      <div class="mainText1">
+        <p style="font-size: 25px">
+          “Only Child triumphs. Zach, at only 6 years old, understands more
+          about the
+          <br />
+          human heart than the broken adults around him. His hope and optimism
+          will<br />
+          have every reader cheering him on, and believing in happy endings even
+          in the<br />
+          face of such tragedy.”
+          <br />
+          <span style="font-size: 15px; color: rgba(1, 1, 1, 1)">
+            <b> — ANN HOOD, THE WASHINGTON POST </b>
+          </span>
+        </p>
+      </div>
+
+      <div class="mainText2">
+        <p style="font-size: 25px">
+          “This hotly anticipated debut novel takes on topics both timely and
+          tragically<br />
+          universal: school shootings, love, loss, forgiveness, and pain.”
+          <br />
+          <span
+            style="font-size: 12px; word-spacing: 5px; color: rgba(1, 1, 1, 1)"
+            ><b>
+              — LIZ EGAN AND ELIZABETH LOGAN, GLAMOUR “ALL THE BOOKS WE CAN'T
+              WAIT TO READ IN 2018”</b
+            >
+          </span>
+        </p>
+      </div>
+
+      <div class="linkReadMoreReviews">
+        <p>
+          <a href="#"> Read More Reviews → </a>
+        </p>
+      </div>
+    </main>
+
+    <div class="about">
+      <h1>About Daniel Chua</h1>
+
+      <img
+        src="assets/aanime.jpg"
+        alt="danielchua"
+        width="400px"
+        height="590px"
+      />
+      <p class="photoCredit" style="font-size: 13px">
+        <i> photo credit: daniel chua </i>
+      </p>
+
+      <p style="margin-top: 3%">
+        I grew up in Bremen, Germany, in a family book-crazy women. My career in
+        advertising brought mer to New
+        <br />
+        York City in my early twenties. After working for several large ad
+        agencies in the city, I let the rat race to be
+        <br />
+        home with my three spirited (read: loud and strong-willed) children.
+        Being a full-time is the best job in the
+        <br />
+        world. it's also the hardest and not always the most fulfilling. Then
+        magical thing happened: I discovered my
+        <br />
+        love for writing. And over the course of a couple of life-changing
+        years, I wrote my first novel, <a href="#"><i> Only Child.</i></a>
+      </p>
+
+      <p>
+        I can't believe I get to share it with you now! Only Child has been
+        published by knopf here in the U.S. and by
+        <br />
+        Mantle in the U.k.. It will also be published in many
+        <a href="#"> countries </a> around the world and translated into sixteen
+        other <br />
+        languages. I cant't wait for you to read it.
+      </p>
+
+      <p>
+        I made this website for you. dear reader. I invite you to become
+        <a href="#"> involved </a>
+      </p>
+
+      <p>
+        Would you like to invite me to talk about Only Child at your next book
+        club or library event? I'm avaiable for
+        <br />
+        events in the NYC area or via Skype or FaceTime.
+        <a href="#"> Contact me here. </a>
+      </p>
+
+      <p>
+        Please check out my <a href="#"> upcoming events </a> , I would love to
+        see you there.
+      </p>
+
+      <p><a href="#"> Read more about me.</a></p>
+    </div>
+
+    <div class="buyBookSection">
+      <button><a href="#"> BUY THE BOOK </a></button>
+    </div>
+
+    <div class="comeAlongSection">
+      <h3>COME ALONG</h3>
+      <p>
+        Accompany me on my exciting journey from stay-at-home mom to published
+        author. Subscribe to my
+      </p>
+      <p>
+        monthly newsletter and get the first 2 chapters of <i> Only Child </i>
+      </p>
+
+      <input type="text" placeholder="Email Address" />
+      <a href="#"> SIGN UP </a>
+
+      <p style="font-size: 12.5px; margin-top: 3%; color: rgb(143, 142, 140)">
+        (I will never share your email with anyone, anywhere. Not Promise. )
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="social">
+        <i class="fa-brands fa-facebook-f fa-lg"></i>
+        <i class="fa-brands fa-twitter fa-lg"></i>
+        <i class="fa-brands fa-github fa-lg"></i>
+      </div>
+
+      <div class="link">
+        <a href="#"> ABOUT </a>
+        <a href="#"> NEWSLETTER </a>
+        <a href="#"> BUY ONLINE </a>
+        <a href="#"> CONTACT </a>
+      </div>
+      <p> © Copyright 2023 Rhiannon Navin. All rights reserved. • Privacy Policy </p>
+      <p> site by DanielChua </p>
+    </div>
+
+    <div class="block">
+      
+    </div>
+  </body>
+</html>
